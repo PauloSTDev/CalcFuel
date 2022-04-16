@@ -14,7 +14,7 @@ export default function Home({ navigation }) {
       Alert.alert("Insira um valor acima de zero")
     }
   }
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.container}>
@@ -22,7 +22,6 @@ export default function Home({ navigation }) {
         <TextInput
           style={styles.textInput}
           keyboardType='numeric'
-          value={km}
           set={setKm}
           onChangeText={(texto) => {setKm(texto)}}
 
@@ -30,7 +29,6 @@ export default function Home({ navigation }) {
         <Text style={styles.text}>Digite quantos litros</Text>
         <TextInput
           style={styles.textInput}
-          value={litros}
           set={setLitros}
           keyboardType='numeric'
           onChangeText={(texto) => {setLitros(texto)}}
