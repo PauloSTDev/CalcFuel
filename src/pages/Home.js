@@ -5,7 +5,7 @@ import { useState, useLayoutEffect } from 'react';
 export default function Home({ navigation }) {
 
   const [km, setKm] = useState(0);
-  const [litros, setLitros] = useState(0);
+  const [litros, setLitros] = useState("0");
 
   const validaOper = () =>  {
     if(km > 0 && litros > 0){
@@ -14,7 +14,7 @@ export default function Home({ navigation }) {
       Alert.alert("Insira um valor acima de zero")
     }
   }
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.container}>
