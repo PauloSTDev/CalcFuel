@@ -1,12 +1,19 @@
-import { StyleSheet, View, Text, TextInput, Button} from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert} from 'react-native';
 
 import { useState, useLayoutEffect } from 'react';
 
 export default function Home({ navigation }) {
 
-  const [km, setKm] = useState("");
-  const [litros, setLitros] = useState("");
+  const [km, setKm] = useState(0);
+  const [litros, setLitros] = useState(0);
 
+  const validaOper = () =>  {
+    if(km > 0 && litros > 0){
+      navigation.navigate("Resultado", {resultado: km/litros, km: km, litros: litros})
+    } else{
+      Alert.alert("Insira um valor acima de zero")
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -33,7 +40,7 @@ export default function Home({ navigation }) {
       <View style={styles.containerButton}>
         <Button      
           title='Calcular'
-          onPress={() => navigation.navigate("Resultado", {resultado: km/litros, km: km, litros: litros})}
+          onPress={validaOper}
         
         />
       </View>

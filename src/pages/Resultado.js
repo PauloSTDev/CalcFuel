@@ -26,7 +26,7 @@ export default function Resultado(props) {
     return (
         <View style={styles.container}>
             <View>
-            <Text style={styles.text}>Resultado {resultado}km por litro</Text>
+            <Text style={styles.text}>Resultado {resultado} km por litro</Text>
             </View>
             <View style={styles.container}>
                 <Text style={styles.text}>Indicação de Consumo de Veículos:</Text>
