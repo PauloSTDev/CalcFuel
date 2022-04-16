@@ -1,10 +1,12 @@
 import { StyleSheet, View, Text, TextInput, Button} from 'react-native';
 
+import { useState, useLayoutEffect } from 'react';
+
 export default function Home({ navigation }) {
 
-  const resultadoOpe = () => {
-    navigation.navigate("Resultado")
-}
+  const [km, setKm] = useState("");
+  const [litros, setLitros] = useState("");
+
 
   return (
     <View style={styles.container}>
@@ -13,22 +15,26 @@ export default function Home({ navigation }) {
         <TextInput
           style={styles.textInput}
           keyboardType='numeric'
+          value={km}
+          set={setKm}
+          onChangeText={(texto) => {setKm(texto)}}
 
         />
         <Text style={styles.text}>Digite quantos litros</Text>
         <TextInput
           style={styles.textInput}
+          value={litros}
+          set={setLitros}
           keyboardType='numeric'
+          onChangeText={(texto) => {setLitros(texto)}}
         />
       </View>
 
-      <View style={styles.container}>
-        <Button style={styles.button}
-
-        
+      <View style={styles.containerButton}>
+        <Button      
           title='Calcular'
-          onPress={resultadoOpe}
-          
+          onPress={() => navigation.navigate("Resultado", {resultado: km/litros, km: km, litros: litros})}
+        
         />
       </View>
     </View>
@@ -37,7 +43,7 @@ export default function Home({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
+    paddingTop: 40,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: "center",
@@ -53,9 +59,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold"
   },
-  button: {
-    backgroundColor: "#53a6d4",
-    color: "#53a6d4",
-    tintColor: "#53a6d4",
+  containerButton: {
+    flex: 1,
+    paddingTop: 40
   }
 });
